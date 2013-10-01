@@ -18,9 +18,7 @@
             <phone>058 934 66 37</phone>
             <adresse>
                 <strasse>Seestrasse</strasse>
-                <nummer>1</nummer>
                 <plz>8000</plz>
-                <ort>Zuerich</ort>
             </adresse>
         </person>
         <person id="z2">
@@ -49,9 +47,9 @@
             <phone>058 934 68 39</phone>
             <adresse>
                 <strasse>Seestrasse</strasse>
-                <nummer>1</nummer>
-                <plz>8810</plz>
-                <ort>Horgen</ort>
+                <nummer>300</nummer>
+                <plz>8820</plz>
+                <ort>Wädenswil</ort>
             </adresse>
             <facebook>
                 <profile-username>alexandre.despindler</profile-username>
@@ -65,12 +63,6 @@
             <email>elke.brucker-kley@zhaw.ch</email>
             <webseite>http://www.brucker-kley.com</webseite>
             <kuerzel>brck</kuerzel>
-            <adresse>
-                <strasse>Seestrasse</strasse>
-                <nummer>300</nummer>
-                <plz>8820</plz>
-                <ort>Wädenswil</ort>
-            </adresse>
             <facebook>
                 <profile-username>elke.bruckerkley</profile-username>
             </facebook>
