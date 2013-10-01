@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+    ===========================================================================
+      Written by Beat Temperli
+      (c) 2013, beat@temper.li
+    ===========================================================================
+-->
+
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 

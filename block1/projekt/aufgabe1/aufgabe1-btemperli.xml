@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?xml-stylesheet type="text/xsl" href="aufgabe1-btemperli.xsl" ?>
+
+<!--
+    ===========================================================================
+      Written by Beat Temperli
+      (c) 2013, beat@temper.li
+    ===========================================================================
+-->
+
 <zhaw>
     <personen>
         <person id="z1">

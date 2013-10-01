@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+    ===========================================================================
+      Written by Beat Temperli
+      (c) 2013, beat@temper.li
+    ===========================================================================
+-->
+
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="zhaw">
         <xs:complexType>
