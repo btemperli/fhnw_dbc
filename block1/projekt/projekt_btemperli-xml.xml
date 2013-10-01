@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="projekt_btemperli-xsl.xsl" ?>
 <zhaw>
     <personen>
         <person id="z1">
@@ -6,30 +7,59 @@
             <email>clemente.minonne@zhaw.ch</email>
             <webseite>http://minonne.ch</webseite>
             <kuerzel>mino</kuerzel>
+            <adresse>
+                <strasse>Weberstrasse</strasse>
+                <nummer>7</nummer>
+                <plz>8004</plz>
+                <ort>Zuerich</ort>
+            </adresse>
         </person>
         <person id="z2">
             <name>Thomas Keller</name>
             <email>th.keller@zhaw.ch</email>
             <webseite>http://thomas.keller.com</webseite>
             <kuerzel>kell</kuerzel>
+            <adresse>
+                <strasse>Weberstrasse</strasse>
+                <plz>8004</plz>
+                <ort>Zuerich</ort>
+            </adresse>
         </person>
         <person id="z3">
             <name>Alexandre de Spindler</name>
             <email>alexandre.despindler@zhaw.ch</email>
             <webseite>http://alex.despindler.ch</webseite>
             <kuerzel>desa</kuerzel>
+            <adresse>
+                <strasse>Weberstrasse</strasse>
+                <nummer>7</nummer>
+                <plz>8004</plz>
+                <ort>Zuerich</ort>
+            </adresse>
         </person>
         <person id="z4">
             <name>Elke Brucker-Kley</name>
             <email>elke.brucker-kley@zhaw.ch</email>
             <webseite>http://www.brucker-kley.com</webseite>
             <kuerzel>brck</kuerzel>
+            <adresse>
+                <strasse>Weberstrasse</strasse>
+                <nummer>7</nummer>
+                <plz>8004</plz>
+                <ort>Zuerich</ort>
+            </adresse>
         </person>
         <person id="z5">
             <name>Brian Rüeger</name>
             <email>brian.rueeger@zhaw.ch</email>
             <webseite>http://www.rueeger-brian.com</webseite>
             <kuerzel>rubn</kuerzel>
+            <adresse>
+                <strasse>Weberstrasse</strasse>
+                <nummer>7</nummer>
+                <plz>8004</plz>
+                <ort>Zuerich</ort>
+            </adresse>
         </person>
     </personen>
 </zhaw>
