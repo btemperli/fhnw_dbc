@@ -17,6 +17,9 @@ in a browser with **file access**. For example you can open *Google Chrome* with
 `open -a /Applications/Google\ Chrome.app --args --allow-file-access-from-files$`
 
 
+
+
+
 * (c) 2013, Beat Temperli
 * beat.temperli@students.fhnw.ch
 * Student iCompetence HS12 // 3iCbb
