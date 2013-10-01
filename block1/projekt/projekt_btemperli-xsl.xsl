@@ -33,6 +33,10 @@
                                 <xsl:value-of select="name"/>
                             </a>
                             <br /><br />
+                            <a href="mailto:{email}" >
+                                Email
+                            </a>
+                            <br />
                             <a href="{webseite}">
                                 Webseite
                             </a>
