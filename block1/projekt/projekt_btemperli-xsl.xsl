@@ -22,7 +22,6 @@
                 <tr bgcolor="#ff9900">
                     <th>Name</th>
                     <th>Bild</th>
-                    <th>Webseite</th>
                     <th>Map</th>
                     <th>Facebook</th>
                 </tr>
@@ -32,14 +31,13 @@
                             <a href="mailto:{email}" >
                                 <xsl:value-of select="name"/>
                             </a>
+                            <br /><br />
+                            <a href="{webseite}">
+                                Webseite
+                            </a>
                         </td>
                         <td>
                             <div class="person-image" style="background-image: url('http://pd.zhaw.ch/portraet/images/{kuerzel}.jpg')" />
-                        </td>
-                        <td>
-                            <a href="{webseite}">
-                                <xsl:value-of select="webseite" />
-                            </a>
                         </td>
                         <td>
                             <div style="width:200px;height:200px">
