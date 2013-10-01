@@ -13,6 +13,9 @@
                 <plz>8000</plz>
                 <ort>Zuerich</ort>
             </adresse>
+            <facebook>
+                <profile-username>clemente</profile-username>
+            </facebook>
         </person>
         <person id="z2">
             <name>Thomas Keller</name>
@@ -25,6 +28,9 @@
                 <plz>8800</plz>
                 <ort>Thalwil</ort>
             </adresse>
+            <facebook>
+                <profile-username>thomas.keller3</profile-username>
+            </facebook>
         </person>
         <person id="z3">
             <name>Alexandre de Spindler</name>
@@ -37,6 +43,9 @@
                 <plz>8810</plz>
                 <ort>Horgen</ort>
             </adresse>
+            <facebook>
+                <profile-username>alexandre.despindler</profile-username>
+            </facebook>
         </person>
         <person id="z4">
             <name>Elke Brucker-Kley</name>
@@ -49,6 +58,9 @@
                 <plz>8820</plz>
                 <ort>Wädenswil</ort>
             </adresse>
+            <facebook>
+                <profile-username>elke.bruckerkley</profile-username>
+            </facebook>
         </person>
         <person id="z5">
             <name>Brian Rüeger</name>
@@ -61,6 +73,9 @@
                 <plz>8805</plz>
                 <ort>Richerswil</ort>
             </adresse>
+            <facebook>
+                <profile-username>brian.p.rueger</profile-username>
+            </facebook>
         </person>
     </personen>
 </zhaw>

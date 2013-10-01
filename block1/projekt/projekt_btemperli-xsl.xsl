@@ -24,6 +24,7 @@
                     <th>Bild</th>
                     <th>Webseite</th>
                     <th>Map</th>
+                    <th>Facebook</th>
                 </tr>
                 <xsl:for-each select="zhaw/personen/person">
                     <tr>
@@ -51,6 +52,11 @@
                                         marginwidth="0"
                                         src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={adresse/strasse}%2B{adresse/nummer}%2B{adresse/plz}%2B{adresse/ort}&amp;ie=UTF8&amp;z=12&amp;t=m&amp;iwloc=near&amp;output=embed" />
                             </div>
+                        </td>
+                        <td>
+                            <a href="http://www.facebook.com/{facebook/profile-username}">
+                                <img src="http://graph.facebook.com/{facebook/profile-username}/picture" />
+                            </a>
                         </td>
                     </tr>
                 </xsl:for-each>

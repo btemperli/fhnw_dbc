@@ -21,6 +21,7 @@
             <xs:element name="webseite" type="xs:anyURI" />
             <xs:element name="kuerzel" type="xs:string" />
             <xs:element name="adresse" type="adresseType" />
+            <xs:element name="facebook" type="facebookType" />
         </xs:sequence>
         <xs:attribute  name="id" type="xs:ID" use="required"/>
     </xs:complexType>
@@ -31,6 +32,12 @@
             <xs:element name="nummer" type="xs:int" />
             <xs:element name="plz" type="xs:int" />
             <xs:element name="ort" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="facebookType">
+        <xs:sequence>
+            <xs:element name="profile-username" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
 
