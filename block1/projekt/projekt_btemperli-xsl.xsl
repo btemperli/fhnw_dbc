@@ -24,6 +24,7 @@
                     <th>Bild</th>
                     <th>Map</th>
                     <th>Facebook</th>
+                    <th>Twitter</th>
                 </tr>
                 <xsl:for-each select="zhaw/personen/person">
                     <tr>
@@ -54,6 +55,11 @@
                         <td>
                             <a href="http://www.facebook.com/{facebook/profile-username}">
                                 <img src="http://graph.facebook.com/{facebook/profile-username}/picture" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="http://twitter.com/{twitter/profile-username}">
+                                @<xsl:value-of select="twitter/profile-username" />
                             </a>
                         </td>
                     </tr>

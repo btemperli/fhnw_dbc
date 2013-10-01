@@ -16,6 +16,9 @@
             <facebook>
                 <profile-username>clemente.haas</profile-username>
             </facebook>
+            <twitter>
+                <profile-username>robertominnone</profile-username>
+            </twitter>
         </person>
         <person id="z2">
             <name>Thomas Keller</name>
@@ -31,6 +34,9 @@
             <facebook>
                 <profile-username>thomas.keller3</profile-username>
             </facebook>
+            <twitter>
+                <profile-username>Chef_Keller</profile-username>
+            </twitter>
         </person>
         <person id="z3">
             <name>Alexandre de Spindler</name>
@@ -46,6 +52,9 @@
             <facebook>
                 <profile-username>alexandre.despindler</profile-username>
             </facebook>
+            <twitter>
+                <profile-username>spin_dog_milli</profile-username>
+            </twitter>
         </person>
         <person id="z4">
             <name>Elke Brucker-Kley</name>
@@ -61,6 +70,9 @@
             <facebook>
                 <profile-username>elke.bruckerkley</profile-username>
             </facebook>
+            <twitter>
+                <profile-username>twinsen0815</profile-username>
+            </twitter>
         </person>
         <person id="z5">
             <name>Brian Rüeger</name>
@@ -76,6 +88,9 @@
             <facebook>
                 <profile-username>brian.p.rueger</profile-username>
             </facebook>
+            <twitter>
+                <profile-username>docrmright</profile-username>
+            </twitter>
         </person>
     </personen>
 </zhaw>

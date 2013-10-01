@@ -22,6 +22,7 @@
             <xs:element name="kuerzel" type="xs:string" />
             <xs:element name="adresse" type="adresseType" />
             <xs:element name="facebook" type="facebookType" />
+            <xs:element name="twitter" type="twitterType" />
         </xs:sequence>
         <xs:attribute  name="id" type="xs:ID" use="required"/>
     </xs:complexType>
@@ -41,4 +42,9 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="twitterType">
+        <xs:sequence>
+            <xs:element name="profile-username" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>
