@@ -22,12 +22,6 @@
                 <plz>8000</plz>
                 <ort>Zuerich</ort>
             </adresse>
-            <facebook>
-                <profile-username>clemente.haas</profile-username>
-            </facebook>
-            <twitter>
-                <profile-username>robertominnone</profile-username>
-            </twitter>
         </person>
         <person id="z2">
             <name>Thomas Keller</name>
@@ -82,9 +76,6 @@
             <facebook>
                 <profile-username>elke.bruckerkley</profile-username>
             </facebook>
-            <twitter>
-                <profile-username>twinsen0815</profile-username>
-            </twitter>
         </person>
         <person id="z5">
             <name>Brian Rüeger</name>
