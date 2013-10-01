@@ -25,7 +25,7 @@
         <xs:attribute  name="id" type="xs:ID" use="required"/>
     </xs:complexType>
 
-    <xs:complexType name="adressType">
+    <xs:complexType name="adresseType">
         <xs:sequence>
             <xs:element name="strasse" type="xs:string" />
             <xs:element name="nummer" type="xs:int" />
