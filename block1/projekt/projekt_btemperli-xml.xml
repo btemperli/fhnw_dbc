@@ -8,9 +8,9 @@
             <webseite>http://minonne.ch</webseite>
             <kuerzel>mino</kuerzel>
             <adresse>
-                <strasse>Weberstrasse</strasse>
-                <nummer>7</nummer>
-                <plz>8004</plz>
+                <strasse>Seestrasse</strasse>
+                <nummer>1</nummer>
+                <plz>8000</plz>
                 <ort>Zuerich</ort>
             </adresse>
         </person>
@@ -20,9 +20,10 @@
             <webseite>http://thomas.keller.com</webseite>
             <kuerzel>kell</kuerzel>
             <adresse>
-                <strasse>Weberstrasse</strasse>
-                <plz>8004</plz>
-                <ort>Zuerich</ort>
+                <strasse>Seestrasse</strasse>
+                <nummer>1</nummer>
+                <plz>8800</plz>
+                <ort>Thalwil</ort>
             </adresse>
         </person>
         <person id="z3">
@@ -31,10 +32,10 @@
             <webseite>http://alex.despindler.ch</webseite>
             <kuerzel>desa</kuerzel>
             <adresse>
-                <strasse>Weberstrasse</strasse>
-                <nummer>7</nummer>
-                <plz>8004</plz>
-                <ort>Zuerich</ort>
+                <strasse>Seestrasse</strasse>
+                <nummer>1</nummer>
+                <plz>8810</plz>
+                <ort>Horgen</ort>
             </adresse>
         </person>
         <person id="z4">
@@ -43,10 +44,10 @@
             <webseite>http://www.brucker-kley.com</webseite>
             <kuerzel>brck</kuerzel>
             <adresse>
-                <strasse>Weberstrasse</strasse>
-                <nummer>7</nummer>
-                <plz>8004</plz>
-                <ort>Zuerich</ort>
+                <strasse>Seestrasse</strasse>
+                <nummer>300</nummer>
+                <plz>8820</plz>
+                <ort>Wädenswil</ort>
             </adresse>
         </person>
         <person id="z5">
@@ -55,10 +56,10 @@
             <webseite>http://www.rueeger-brian.com</webseite>
             <kuerzel>rubn</kuerzel>
             <adresse>
-                <strasse>Weberstrasse</strasse>
-                <nummer>7</nummer>
-                <plz>8004</plz>
-                <ort>Zuerich</ort>
+                <strasse>Seestrasse</strasse>
+                <nummer>1</nummer>
+                <plz>8805</plz>
+                <ort>Richerswil</ort>
             </adresse>
         </person>
     </personen>
