@@ -20,6 +20,7 @@
             <xs:element name="email" type="xs:string" />
             <xs:element name="webseite" type="xs:anyURI" />
             <xs:element name="kuerzel" type="xs:string" />
+            <xs:element name="phone" type="xs:string" />
             <xs:element name="adresse" type="adresseType" />
             <xs:element name="facebook" type="facebookType" />
             <xs:element name="twitter" type="twitterType" />

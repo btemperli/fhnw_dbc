@@ -40,6 +40,10 @@
                             <a href="{webseite}">
                                 Webseite
                             </a>
+                            <br />
+                            <a href="skype:{phone}?call">
+                                Call via Skype
+                            </a>
                         </td>
                         <td>
                             <div class="person-image" style="background-image: url('http://pd.zhaw.ch/portraet/images/{kuerzel}.jpg')" />
