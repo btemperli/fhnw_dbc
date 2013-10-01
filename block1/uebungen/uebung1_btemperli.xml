@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<firma>
+    <mitarbeiter>
+        <person id="a1">
+            <name>Damian Marley</name>
+            <email>damian@marley.com</email>
+        </person>
+        <person id="a2">
+            <name>Alicia Keys</name>
+            <email>alicia@keys.net</email>
+        </person>
+        <person id="a3">
+            <name>Thom Yorke</name>
+            <email>thom.yorke@radio.co.uk</email>
+        </person>
+        <person id="a4">
+            <name>Bono</name>
+            <email>bono@u.too</email>
+        </person>
+    </mitarbeiter>
+    <projekte>
+        <projekt>
+            <name>P1</name>
+            <dauer>P5M</dauer>
+            <maref>
+                <mitarbeiterRef maref="a1" />
+                <mitarbeiterRef maref="a2" />
+                <mitarbeiterRef maref="a4" />
+            </maref>
+        </projekt>
+        <projekt>
+            <name>P2</name>
+            <dauer>P2M</dauer>
+            <maref>
+                <mitarbeiterRef maref="a3" />
+                <mitarbeiterRef maref="a4" />
+            </maref>
+        </projekt>
+        <projekt>
+            <name>P3</name>
+            <dauer>P6M</dauer>
+            <maref>
+                <mitarbeiterRef maref="a2" />
+                <mitarbeiterRef maref="a3" />
+                <mitarbeiterRef maref="a4" />
+            </maref>
+        </projekt>
+    </projekte>
+</firma>

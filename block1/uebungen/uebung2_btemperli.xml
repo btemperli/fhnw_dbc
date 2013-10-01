@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="firma">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mitarbeiter" type="mitarbeiterType" maxOccurs="unbounded" />
+                <xs:element name="projekte" type="projekteType" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="mitarbeiterType">
+        <xs:sequence>
+            <xs:element name="person" type="personType" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="personType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="email" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute  name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="projekteType">
+        <xs:sequence>
+            <xs:element name="projekt" type="projektType" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="projektType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="dauer" type="xs:duration" />
+            <xs:element name="maref" type="marefType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="marefType">
+        <xs:sequence>
+            <xs:element name="mitarbeiterRef" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="maref" type="xs:IDREF" use="required" />
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
