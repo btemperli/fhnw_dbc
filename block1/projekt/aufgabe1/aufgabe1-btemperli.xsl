@@ -45,13 +45,17 @@
                                 Email
                             </a>
                             <br />
-                            <a href="{webseite}">
-                                Webseite
-                            </a>
-                            <br />
-                            <a href="skype:{phone}?call">
-                                Call via Skype
-                            </a>
+                            <xsl:if test="webseite">
+                                <a href="{webseite}">
+                                    Webseite
+                                </a>
+                                <br />
+                            </xsl:if>
+                            <xsl:if test="phone">
+                                <a href="skype:{phone}?call">
+                                    Call via Skype
+                                </a>
+                            </xsl:if>
                         </td>
                         <td>
                             <div class="person-image" style="background-image: url('http://pd.zhaw.ch/portraet/images/{kuerzel}.jpg')" />
