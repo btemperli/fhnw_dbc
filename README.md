@@ -1,10 +1,10 @@
 #FHNW - Fach dbC - HS2013
 
-* (c) 2013, Beat Temperli
-* beat.temperli@students.fhnw.ch
-* Student iCompetence HS12 // 3iCbb
+(c) 2013, Beat Temperli
+beat.temperli@students.fhnw.ch
+Student iCompetence HS12 // 3iCbb
 
-* Dozent: Alexandre de Spindler
+Dozent: Alexandre de Spindler
 
 ## Projekt 1
 
