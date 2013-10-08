@@ -62,7 +62,6 @@
                             <div class="person-image" style="background-image: url('http://pd.zhaw.ch/portraet/images/{d:kuerzel}.jpg')" />
                         </td>
                         <td>
-                            Projekt:
                             <ul>
                                 <xsl:for-each select="key('mitarbeiter_id', @id)">
                                     <li>
@@ -70,7 +69,6 @@
                                     </li>
                                 </xsl:for-each>
                             </ul>
-
                         </td>
                     </tr>
                 </xsl:for-each>
