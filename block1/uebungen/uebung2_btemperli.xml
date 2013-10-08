@@ -1,50 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:Uebung.Namespace"
+            xmlns="urn:Uebung.Namespace"
+            elementFormDefault="qualified">
 
-    <xs:element name="firma">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="mitarbeiter" type="mitarbeiterType" maxOccurs="unbounded" />
-                <xs:element name="projekte" type="projekteType" maxOccurs="unbounded" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <xsd:element name="firma">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="mitarbeiter" type="mitarbeiterType" maxOccurs="unbounded" />
+                <xsd:element name="projekte" type="projekteType" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
 
-    <xs:complexType name="mitarbeiterType">
-        <xs:sequence>
-            <xs:element name="person" type="personType" maxOccurs="unbounded" />
-        </xs:sequence>
-    </xs:complexType>
+    <xsd:complexType name="mitarbeiterType">
+        <xsd:sequence>
+            <xsd:element name="person" type="personType" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
 
-    <xs:complexType name="personType">
-        <xs:sequence>
-            <xs:element name="name" type="xs:string" />
-            <xs:element name="email" type="xs:string" />
-        </xs:sequence>
-        <xs:attribute  name="id" type="xs:ID" use="required"/>
-    </xs:complexType>
+    <xsd:complexType name="personType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="email" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute  name="id" type="xsd:ID" use="required"/>
+    </xsd:complexType>
 
-    <xs:complexType name="projekteType">
-        <xs:sequence>
-            <xs:element name="projekt" type="projektType" maxOccurs="unbounded" />
-        </xs:sequence>
-    </xs:complexType>
+    <xsd:complexType name="projekteType">
+        <xsd:sequence>
+            <xsd:element name="projekt" type="projektType" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
 
-    <xs:complexType name="projektType">
-        <xs:sequence>
-            <xs:element name="name" type="xs:string" />
-            <xs:element name="dauer" type="xs:duration" />
-            <xs:element name="maref" type="marefType" />
-        </xs:sequence>
-    </xs:complexType>
+    <xsd:complexType name="projektType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="dauer" type="xsd:duration" />
+            <xsd:element name="maref" type="marefType" />
+        </xsd:sequence>
+    </xsd:complexType>
 
-    <xs:complexType name="marefType">
-        <xs:sequence>
-            <xs:element name="mitarbeiterRef" maxOccurs="unbounded">
-                <xs:complexType>
-                    <xs:attribute name="maref" type="xs:IDREF" use="required" />
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-</xs:schema>
+    <xsd:complexType name="marefType">
+        <xsd:sequence>
+            <xsd:element name="mitarbeiterRef" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:attribute name="maref" type="xsd:IDREF" use="required" />
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

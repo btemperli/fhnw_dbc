@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<firma>
+<firma
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:Uebung.Namespace"
+    xsi:schemaLocation="urn:Uebung.Namespace uebung2_btemperli.xml"
+>
     <mitarbeiter>
         <person id="a1">
             <name>Damian Marley</name>
