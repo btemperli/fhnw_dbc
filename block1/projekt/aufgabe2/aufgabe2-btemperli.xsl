@@ -12,10 +12,6 @@
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         xmlns:d="urn:ZHAW.btemperli"
 >
-<!--<xsl:stylesheet-->
-        <!--version="1.0"-->
-        <!--xmlns:xsl="http://www.w3.org/1999/XSL/Transform"-->
-    <!-->-->
     <xsl:output
             method="html"
             version="4.0"
@@ -39,8 +35,7 @@
                     <th>Name</th>
                     <th>Bild</th>
                     <th>Map</th>
-                    <th>Facebook</th>
-                    <th>Twitter</th>
+                    <th>Social</th>
                     <th>Projekte</th>
                 </tr>
                 <xsl:for-each select="d:zhaw/d:personen/d:person">
@@ -89,8 +84,8 @@
                                     <img src="http://graph.facebook.com/{d:facebook/d:profile-username}/picture" />
                                 </a>
                             </xsl:if>
-                        </td>
-                        <td>
+                            <br />
+                            <br />
                             <xsl:if test="d:twitter">
                                 <a href="http://twitter.com/{d:twitter/d:profile-username}">
                                     @<xsl:value-of select="d:twitter/d:profile-username" />

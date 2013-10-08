@@ -45,7 +45,7 @@
     <xsd:complexType name="adresseType">
         <xsd:sequence>
             <xsd:element name="strasse" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="nummer" type="xsd:int" minOccurs="0"/>
+            <xsd:element name="nummer" type="xsd:string" minOccurs="0"/>
             <xsd:element name="plz" type="xsd:int" />
             <xsd:element name="ort" type="xsd:string" minOccurs="0"/>
         </xsd:sequence>
