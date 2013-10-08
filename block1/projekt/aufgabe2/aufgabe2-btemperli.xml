@@ -20,32 +20,85 @@
             <email>clemente.minonne@zhaw.ch</email>
             <webseite>http://minonne.ch</webseite>
             <kuerzel>mino</kuerzel>
+            <phone>058 934 66 37</phone>
+            <adresse>
+                <strasse>Seestrasse</strasse>
+                <plz>8000</plz>
+            </adresse>
         </person>
         <person id="z2">
             <name>Thomas Keller</name>
             <email>th.keller@zhaw.ch</email>
             <kuerzel>kell</kuerzel>
+            <phone>058 934 78 61</phone>
+            <adresse>
+                <strasse>Seestrasse</strasse>
+                <nummer>1</nummer>
+                <plz>8800</plz>
+                <ort>Thalwil</ort>
+            </adresse>
+            <facebook>
+                <profile-username>thomas.keller3</profile-username>
+            </facebook>
+            <twitter>
+                <profile-username>Chef_Keller</profile-username>
+            </twitter>
         </person>
         <person id="z3">
             <name>Alexandre de Spindler</name>
             <email>alexandre.despindler@zhaw.ch</email>
             <webseite>http://alex.despindler.ch</webseite>
             <kuerzel>desa</kuerzel>
+            <phone>058 934 68 39</phone>
+            <adresse>
+                <strasse>Seestrasse</strasse>
+                <nummer>300</nummer>
+                <plz>8820</plz>
+                <ort>Wädenswil</ort>
+            </adresse>
+            <facebook>
+                <profile-username>alexandre.despindler</profile-username>
+            </facebook>
+            <twitter>
+                <profile-username>spin_dog_milli</profile-username>
+            </twitter>
         </person>
         <person id="z4">
             <name>Elke Brucker-Kley</name>
             <email>elke.brucker-kley@zhaw.ch</email>
             <webseite>http://www.brucker-kley.com</webseite>
             <kuerzel>brck</kuerzel>
+            <facebook>
+                <profile-username>elke.bruckerkley</profile-username>
+            </facebook>
         </person>
         <person id="z5">
             <name>Brian Rüeger</name>
             <email>brian.rueeger@zhaw.ch</email>
             <webseite>http://www.rueeger-brian.com</webseite>
             <kuerzel>rubn</kuerzel>
+            <phone>058 934 68 75</phone>
+            <adresse>
+                <strasse>Seestrasse</strasse>
+                <nummer>1</nummer>
+                <plz>8805</plz>
+                <ort>Richerswil</ort>
+            </adresse>
+            <facebook>
+                <profile-username>brian.p.rueger</profile-username>
+            </facebook>
+            <twitter>
+                <profile-username>docrmright</profile-username>
+            </twitter>
         </person>
     </personen>
     <projekte>
+        <projekt>
+            <name>Projekt W</name>
+            <mitarbeiter>
+                <mitarbeiterReferenz mitarbeiterID="z2" />
+            </mitarbeiter>
+        </projekt>
         <projekt>
             <name>Projekt X</name>
             <mitarbeiter>

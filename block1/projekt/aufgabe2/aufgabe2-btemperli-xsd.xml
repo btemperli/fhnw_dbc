@@ -13,9 +13,6 @@
     xmlns="urn:ZHAW.btemperli"
     elementFormDefault="qualified"
 >
-<!--<xsd:schema-->
-    <!--xmlns:xsd="http://www.w3.org/2001/XMLSchema"-->
-<!-->-->
     <xsd:element name="zhaw">
         <xsd:complexType>
             <xsd:sequence>
@@ -37,8 +34,33 @@
             <xsd:element name="email" type="xsd:string" />
             <xsd:element name="webseite" type="xsd:anyURI" minOccurs="0" />
             <xsd:element name="kuerzel" type="xsd:string" />
+            <xsd:element name="phone" type="xsd:string" minOccurs="0" />
+            <xsd:element name="adresse" type="adresseType" minOccurs="0" />
+            <xsd:element name="facebook" type="facebookType" minOccurs="0" />
+            <xsd:element name="twitter" type="twitterType" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute  name="id" type="xsd:ID" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="adresseType">
+        <xsd:sequence>
+            <xsd:element name="strasse" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="nummer" type="xsd:int" minOccurs="0"/>
+            <xsd:element name="plz" type="xsd:int" />
+            <xsd:element name="ort" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="facebookType">
+        <xsd:sequence>
+            <xsd:element name="profile-username" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="twitterType">
+        <xsd:sequence>
+            <xsd:element name="profile-username" type="xsd:string" />
+        </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="projekteType">

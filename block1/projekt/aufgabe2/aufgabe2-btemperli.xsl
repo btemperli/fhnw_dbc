@@ -38,6 +38,9 @@
                 <tr bgcolor="#ff9900">
                     <th>Name</th>
                     <th>Bild</th>
+                    <th>Map</th>
+                    <th>Facebook</th>
+                    <th>Twitter</th>
                     <th>Projekte</th>
                 </tr>
                 <xsl:for-each select="d:zhaw/d:personen/d:person">
@@ -57,10 +60,45 @@
                                 </a>
                                 <br />
                             </xsl:if>
+                            <xsl:if test="d:phone">
+                                <a href="skype:{d:phone}?call">
+                                    Call via Skype
+                                </a>
+                            </xsl:if>
                         </td>
                         <td>
                             <div class="person-image" style="background-image: url('http://pd.zhaw.ch/portraet/images/{d:kuerzel}.jpg')" />
                         </td>
+                        <td>
+                            <xsl:if test="d:adresse">
+                                <div style="width:200px;height:200px">
+                                    <iframe
+                                            width="200"
+                                            height="200"
+                                            frameborder="0"
+                                            scrolling="no"
+                                            marginheight="0"
+                                            marginwidth="0"
+                                            src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={d:adresse/strasse}%2B{adresse/nummer}%2B{adresse/plz}%2B{adresse/ort}&amp;ie=UTF8&amp;z=12&amp;t=m&amp;iwloc=near&amp;output=embed" />
+                                </div>
+                            </xsl:if>
+                        </td>
+                        <td>
+                            <xsl:if test="d:facebook">
+                                <a href="http://www.facebook.com/{d:facebook/d:profile-username}">
+                                    <img src="http://graph.facebook.com/{d:facebook/d:profile-username}/picture" />
+                                </a>
+                            </xsl:if>
+                        </td>
+                        <td>
+                            <xsl:if test="d:twitter">
+                                <a href="http://twitter.com/{d:twitter/d:profile-username}">
+                                    @<xsl:value-of select="d:twitter/d:profile-username" />
+                                </a>
+                            </xsl:if>
+                        </td>
+
+                        <!-- Projekte -->
                         <td>
                             <ul>
                                 <xsl:for-each select="key('mitarbeiter_id', @id)">
