@@ -13,6 +13,7 @@
     xmlns="urn:ZHAW.btemperli"
     xsi:schemaLocation="urn:ZHAW.btemperli aufgabe2-btemperli-xsd.xml"
 >
+
     <personen>
         <person id="z1">
             <name>Clemente Minonne</name>
@@ -52,6 +53,7 @@
                 <mitarbeiterReferenz mitarbeiterID="z2" />
                 <mitarbeiterReferenz mitarbeiterID="z3" />
             </mitarbeiter>
+
         </projekt>
         <projekt>
             <name>Projekt Y</name>

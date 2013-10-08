@@ -7,22 +7,27 @@
     ===========================================================================
 -->
 
-<xsl:stylesheet version="1.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:d="urn:ZHAW.btemperli"
-
-        >
-
+<xsl:stylesheet
+        version="1.0"
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+        xmlns:d="urn:ZHAW.btemperli"
+>
+<!--<xsl:stylesheet-->
+        <!--version="1.0"-->
+        <!--xmlns:xsl="http://www.w3.org/1999/XSL/Transform"-->
+    <!-->-->
     <xsl:output
             method="html"
             version="4.0"
             encoding="utf-8"
             indent="yes"/>
 
+    <xsl:key name="mitarbeiter_id" match="d:zhaw/d:projekte/d:projekt/d:mitarbeiter/d:mitarbeiterReferenz" use="@mitarbeiterID"/>
+
     <xsl:template match="/">
         <html>
             <head>
-                <title>Projekt 1 - btemperli</title>
+                <title>Projekt 1 - Aufgabe 2 - btemperli</title>
                 <!-- bind css -->
                 <link rel="stylesheet" type="text/css" href="css/normalize.css" />
                 <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -33,6 +38,7 @@
                 <tr bgcolor="#ff9900">
                     <th>Name</th>
                     <th>Bild</th>
+                    <th>Projekte</th>
                 </tr>
                 <xsl:for-each select="d:zhaw/d:personen/d:person">
                     <tr>
@@ -54,6 +60,17 @@
                         </td>
                         <td>
                             <div class="person-image" style="background-image: url('http://pd.zhaw.ch/portraet/images/{d:kuerzel}.jpg')" />
+                        </td>
+                        <td>
+                            Projekt:
+                            <ul>
+                                <xsl:for-each select="key('mitarbeiter_id', @id)">
+                                    <li>
+                                        <xsl:value-of select="../../d:name" />
+                                    </li>
+                                </xsl:for-each>
+                            </ul>
+
                         </td>
                     </tr>
                 </xsl:for-each>
