@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="urn:Uebung.Namespace"
-            xmlns="urn:Uebung.Namespace"
-            elementFormDefault="qualified">
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="urn:Uebung.Namespace"
+    xmlns="urn:Uebung.Namespace"
+    elementFormDefault="qualified"
+>
 
     <xsd:element name="firma">
         <xsd:complexType>

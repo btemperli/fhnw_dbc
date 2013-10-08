@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<?xml-stylesheet type="text/xsl" href="aufgabe1-btemperli.xsl" ?>
+<?xml-stylesheet type="text/xsl" href="aufgabe1-btemperli.xsl"?>
 
 <!--
     ===========================================================================
@@ -8,7 +8,11 @@
     ===========================================================================
 -->
 
-<zhaw>
+<zhaw
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:ZHAW.btemperli"
+    xsi:schemaLocation="urn:ZHAW.btemperli aufgabe1-btemperli-xsd.xml"
+>
     <personen>
         <person id="z1">
             <name>Clemente Minonne</name>

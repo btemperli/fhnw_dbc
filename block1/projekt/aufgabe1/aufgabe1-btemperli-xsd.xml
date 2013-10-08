@@ -7,53 +7,58 @@
     ===========================================================================
 -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="zhaw">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="personen" type="personenType" maxOccurs="unbounded" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="urn:ZHAW.btemperli"
+    xmlns="urn:ZHAW.btemperli"
+    elementFormDefault="qualified"
+>
+    <xsd:element name="zhaw">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="personen" type="personenType" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
 
-    <xs:complexType name="personenType">
-        <xs:sequence>
-            <xs:element name="person" type="personType" maxOccurs="unbounded" />
-        </xs:sequence>
-    </xs:complexType>
+    <xsd:complexType name="personenType">
+        <xsd:sequence>
+            <xsd:element name="person" type="personType" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
 
-    <xs:complexType name="personType">
-        <xs:sequence>
-            <xs:element name="name" type="xs:string" />
-            <xs:element name="email" type="xs:string" />
-            <xs:element name="webseite" type="xs:anyURI" />
-            <xs:element name="kuerzel" type="xs:string" />
-            <xs:element name="phone" type="xs:string" />
-            <xs:element name="adresse" type="adresseType" />
-            <xs:element name="facebook" type="facebookType" />
-            <xs:element name="twitter" type="twitterType" />
-        </xs:sequence>
-        <xs:attribute  name="id" type="xs:ID" use="required"/>
-    </xs:complexType>
+    <xsd:complexType name="personType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="email" type="xsd:string" />
+            <xsd:element name="webseite" type="xsd:anyURI" minOccurs="0" />
+            <xsd:element name="kuerzel" type="xsd:string" />
+            <xsd:element name="phone" type="xsd:string" minOccurs="0" />
+            <xsd:element name="adresse" type="adresseType" minOccurs="0" />
+            <xsd:element name="facebook" type="facebookType" minOccurs="0" />
+            <xsd:element name="twitter" type="twitterType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute  name="id" type="xsd:ID" use="required"/>
+    </xsd:complexType>
 
-    <xs:complexType name="adresseType">
-        <xs:sequence>
-            <xs:element name="strasse" type="xs:string" />
-            <xs:element name="nummer" type="xs:int" />
-            <xs:element name="plz" type="xs:int" />
-            <xs:element name="ort" type="xs:string" />
-        </xs:sequence>
-    </xs:complexType>
+    <xsd:complexType name="adresseType">
+        <xsd:sequence>
+            <xsd:element name="strasse" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="nummer" type="xsd:int" minOccurs="0"/>
+            <xsd:element name="plz" type="xsd:int" />
+            <xsd:element name="ort" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
 
-    <xs:complexType name="facebookType">
-        <xs:sequence>
-            <xs:element name="profile-username" type="xs:string" />
-        </xs:sequence>
-    </xs:complexType>
+    <xsd:complexType name="facebookType">
+        <xsd:sequence>
+            <xsd:element name="profile-username" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
 
-    <xs:complexType name="twitterType">
-        <xs:sequence>
-            <xs:element name="profile-username" type="xs:string" />
-        </xs:sequence>
-    </xs:complexType>
-</xs:schema>
+    <xsd:complexType name="twitterType">
+        <xsd:sequence>
+            <xsd:element name="profile-username" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
