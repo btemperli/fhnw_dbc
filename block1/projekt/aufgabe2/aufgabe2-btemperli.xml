@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- <?xml-stylesheet type="text/xsl" href="aufgabe1-btemperli.xsl" ?> -->
+<?xml-stylesheet type="text/xsl" href="aufgabe2-btemperli.xsl"?>
 
 <!--
     ===========================================================================
@@ -8,19 +8,59 @@
     ===========================================================================
 -->
 
-<company>
-    <projects>
-        <project id="p-1">
-            <name>Project Alpha</name>
-            <duration>P5M</duration>
-        </project>
-        <project id="p-2">
-            <name>Project Beta</name>
-            <duration>P2M</duration>
-        </project>
-        <project id="p-3">
-            <name>Project Gamma</name>
-            <duration>P15M</duration>
-        </project>
-    </projects>
-</company>
+<zhaw
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:ZHAW.btemperli"
+    xsi:schemaLocation="urn:ZHAW.btemperli aufgabe2-btemperli-xsd.xml"
+>
+    <personen>
+        <person id="z1">
+            <name>Clemente Minonne</name>
+            <email>clemente.minonne@zhaw.ch</email>
+            <webseite>http://minonne.ch</webseite>
+            <kuerzel>mino</kuerzel>
+        </person>
+        <person id="z2">
+            <name>Thomas Keller</name>
+            <email>th.keller@zhaw.ch</email>
+            <kuerzel>kell</kuerzel>
+        </person>
+        <person id="z3">
+            <name>Alexandre de Spindler</name>
+            <email>alexandre.despindler@zhaw.ch</email>
+            <webseite>http://alex.despindler.ch</webseite>
+            <kuerzel>desa</kuerzel>
+        </person>
+        <person id="z4">
+            <name>Elke Brucker-Kley</name>
+            <email>elke.brucker-kley@zhaw.ch</email>
+            <webseite>http://www.brucker-kley.com</webseite>
+            <kuerzel>brck</kuerzel>
+        </person>
+        <person id="z5">
+            <name>Brian Rüeger</name>
+            <email>brian.rueeger@zhaw.ch</email>
+            <webseite>http://www.rueeger-brian.com</webseite>
+            <kuerzel>rubn</kuerzel>
+        </person>
+    </personen>
+    <projekte>
+        <projekt>
+            <name>Projekt X</name>
+            <mitarbeiter>
+                <mitarbeiterReferenz mitarbeiterID="z1" />
+                <mitarbeiterReferenz mitarbeiterID="z2" />
+                <mitarbeiterReferenz mitarbeiterID="z3" />
+            </mitarbeiter>
+        </projekt>
+        <projekt>
+            <name>Projekt Y</name>
+            <mitarbeiter>
+                <mitarbeiterReferenz mitarbeiterID="z3" />
+                <mitarbeiterReferenz mitarbeiterID="z4" />
+                <mitarbeiterReferenz mitarbeiterID="z5" />
+            </mitarbeiter>
+        </projekt>
+
+    </projekte>
+</zhaw>
