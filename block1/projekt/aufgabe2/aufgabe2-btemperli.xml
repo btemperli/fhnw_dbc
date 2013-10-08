@@ -61,6 +61,13 @@
                 <mitarbeiterReferenz mitarbeiterID="z5" />
             </mitarbeiter>
         </projekt>
-
+        <projekt>
+            <name>Projekt Z</name>
+            <mitarbeiter>
+                <mitarbeiterReferenz mitarbeiterID="z1" />
+                <mitarbeiterReferenz mitarbeiterID="z3" />
+                <mitarbeiterReferenz mitarbeiterID="z5" />
+            </mitarbeiter>
+        </projekt>
     </projekte>
 </zhaw>
