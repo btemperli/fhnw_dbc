@@ -95,12 +95,14 @@
     <projekte>
         <projekt>
             <name>Projekt W</name>
+            <umsatz>100000</umsatz>
             <mitarbeiter>
                 <mitarbeiterReferenz mitarbeiterID="z2" />
             </mitarbeiter>
         </projekt>
         <projekt>
             <name>Projekt X</name>
+            <umsatz>100000</umsatz>
             <mitarbeiter>
                 <mitarbeiterReferenz mitarbeiterID="z1" />
                 <mitarbeiterReferenz mitarbeiterID="z2" />
@@ -110,6 +112,7 @@
         </projekt>
         <projekt>
             <name>Projekt Y</name>
+            <umsatz>100000</umsatz>
             <mitarbeiter>
                 <mitarbeiterReferenz mitarbeiterID="z3" />
                 <mitarbeiterReferenz mitarbeiterID="z4" />
@@ -118,6 +121,7 @@
         </projekt>
         <projekt>
             <name>Projekt Z</name>
+            <umsatz>100000</umsatz>
             <mitarbeiter>
                 <mitarbeiterReferenz mitarbeiterID="z1" />
                 <mitarbeiterReferenz mitarbeiterID="z3" />

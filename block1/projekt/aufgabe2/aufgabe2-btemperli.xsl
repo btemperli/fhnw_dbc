@@ -74,7 +74,7 @@
                                             scrolling="no"
                                             marginheight="0"
                                             marginwidth="0"
-                                            src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={d:adresse/strasse}%2B{adresse/nummer}%2B{adresse/plz}%2B{adresse/ort}&amp;ie=UTF8&amp;z=12&amp;t=m&amp;iwloc=near&amp;output=embed" />
+                                            src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={d:adresse/d:strasse}%2B{d:adresse/d:nummer}%2B{d:adresse/d:plz}%2B{d:adresse/d:ort}&amp;ie=UTF8&amp;z=12&amp;t=m&amp;iwloc=near&amp;output=embed" />
                                 </div>
                             </xsl:if>
                         </td>
@@ -98,10 +98,13 @@
                             <ul>
                                 <xsl:for-each select="key('mitarbeiter_id', @id)">
                                     <li>
-                                        <xsl:value-of select="../../d:name" />
+                                        <xsl:value-of select="../../d:name" /> (total: <xsl:value-of select="../../d:umsatz" />)
                                     </li>
                                 </xsl:for-each>
                             </ul>
+                            Umsatz dieser Projekte: <xsl:value-of select="sum(key('mitarbeiter_id', @id)/../../d:umsatz)" />
+
+
                         </td>
                     </tr>
                 </xsl:for-each>

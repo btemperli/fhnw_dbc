@@ -72,6 +72,7 @@
     <xsd:complexType name="projektType">
         <xsd:sequence>
             <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="umsatz" type="xsd:int" />
             <xsd:element name="mitarbeiter" type="mitarbeiterType" />
         </xsd:sequence>
     </xsd:complexType>
