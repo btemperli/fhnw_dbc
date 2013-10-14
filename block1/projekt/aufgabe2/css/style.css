@@ -4,7 +4,8 @@
  * ===================================== */
 table {
     position: relative;
-    left: 100px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     margin-bottom: 100px;
 }
@@ -34,4 +35,5 @@ ul {
 }
 li {
     margin-right: 10px;
+    text-align: left;
 }

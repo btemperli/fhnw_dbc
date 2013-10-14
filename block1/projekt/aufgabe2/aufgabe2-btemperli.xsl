@@ -97,13 +97,21 @@
                         <td>
                             <ul>
                                 <xsl:for-each select="key('mitarbeiter_id', @id)">
+                                    <xsl:variable name="umsatz-pro-person" select="format-number(((../../d:umsatz) div count(../d:mitarbeiterReferenz)), '#,###.0')" />
                                     <li>
-                                        <xsl:value-of select="../../d:name" /> (total: <xsl:value-of select="../../d:umsatz" />)
+                                        <b><xsl:value-of select="../../d:name" /></b>
+                                        <br />
+                                        Umsatz: <xsl:value-of select="format-number((../../d:umsatz), '#,###.0')" />
+                                        <br />
+                                        Umsatz/Person: <xsl:value-of select="$umsatz-pro-person" />
                                     </li>
                                 </xsl:for-each>
                             </ul>
-                            Umsatz dieser Projekte: <xsl:value-of select="sum(key('mitarbeiter_id', @id)/../../d:umsatz)" />
-
+                            <xsl:variable name="umsatztotal-person" select="format-number((sum(key('mitarbeiter_id', @id)/../../d:umsatz)), '#,###')" />
+                            Umsatz aller Projekte: <xsl:value-of select="$umsatztotal-person" />
+                            <br />
+                            Eigener Umsatz: <xsl:value-of select="(sum(key('mitarbeiter_id', @id)/../../d:umsatz) div count(d:mitarbeiter/d:mitarbeiterReferenz))" />
+                            <!--<xsl:value-of select="sum()" />-->
 
                         </td>
                     </tr>

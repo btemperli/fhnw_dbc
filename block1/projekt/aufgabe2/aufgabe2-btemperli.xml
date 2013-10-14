@@ -107,6 +107,8 @@
                 <mitarbeiterReferenz mitarbeiterID="z1" />
                 <mitarbeiterReferenz mitarbeiterID="z2" />
                 <mitarbeiterReferenz mitarbeiterID="z3" />
+                <mitarbeiterReferenz mitarbeiterID="z4" />
+                <mitarbeiterReferenz mitarbeiterID="z5" />
             </mitarbeiter>
 
         </projekt>
@@ -125,6 +127,15 @@
             <mitarbeiter>
                 <mitarbeiterReferenz mitarbeiterID="z1" />
                 <mitarbeiterReferenz mitarbeiterID="z3" />
+            </mitarbeiter>
+        </projekt>
+        <projekt>
+            <name>Projekt XYZ</name>
+            <umsatz>200000</umsatz>
+            <mitarbeiter>
+                <mitarbeiterReferenz mitarbeiterID="z2" />
+                <mitarbeiterReferenz mitarbeiterID="z3" />
+                <mitarbeiterReferenz mitarbeiterID="z4" />
                 <mitarbeiterReferenz mitarbeiterID="z5" />
             </mitarbeiter>
         </projekt>
