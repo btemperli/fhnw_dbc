@@ -22,3 +22,22 @@ INSERT INTO Personen (ID, Name, Email) VALUES
 -- check content of table
 SELECT * FROM Personen;
 
+-- create table Projects Projekte(ID, Titel)
+CREATE TABLE IF NOT EXISTS Projekte (ID INTEGER KEY, Titel VARCHAR(30));
+
+-- check table
+DESCRIBE Projekte;
+
+-- insert projects into table Projekte
+INSERT INTO Projekte (ID, Titel) VALUES
+    (1, "Projekt A"),
+    (2, "Projekt B"),
+    (3, "Projekt C"),
+    (4, "Projekt D"),
+    (5, "Projekt E"),
+    (6, "Projekt F"),
+    (7, "Projekt G"),
+    (8, "Projekt H");
+
+-- check content of table
+SELECT * FROM Projekte;
