@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+    ===========================================================================
+      Written by Beat Temperli
+      (c) 2013, beat@temper.li
+    ===========================================================================
+-->
+
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="urn:ZHAW.btemperli"
+    xmlns="urn:ZHAW.btemperli"
+    elementFormDefault="qualified" >
+
+    <xsd:element name="zhaw">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="personen" type="personenType" maxOccurs="unbounded" />
+                <xsd:element name="projekte" type="projekteType" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="personenType">
+        <xsd:sequence>
+            <xsd:element name="person" type="personType" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="personType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="email" type="xsd:string" />
+            <xsd:element name="webseite" type="xsd:anyURI" minOccurs="0" />
+            <xsd:element name="kuerzel" type="xsd:string" />
+            <xsd:element name="phone" type="xsd:string" minOccurs="0" />
+            <xsd:element name="adresse" type="adresseType" minOccurs="0" />
+            <xsd:element name="facebook" type="facebookType" minOccurs="0" />
+            <xsd:element name="twitter" type="twitterType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute  name="id" type="xsd:ID" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="adresseType">
+        <xsd:sequence>
+            <xsd:element name="strasse" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="nummer" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="plz" type="xsd:int" />
+            <xsd:element name="ort" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="facebookType">
+        <xsd:sequence>
+            <xsd:element name="profile-username" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="twitterType">
+        <xsd:sequence>
+            <xsd:element name="profile-username" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="projekteType">
+        <xsd:sequence>
+            <xsd:element name="projekt" type="projektType" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="projektType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="umsatz" type="xsd:int" />
+            <xsd:element name="mitarbeiter" type="mitarbeiterType" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="mitarbeiterType">
+        <xsd:sequence>
+            <xsd:element name="mitarbeiterReferenz" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:attribute name="mitarbeiterID" type="xsd:IDREF" use="required" />
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
