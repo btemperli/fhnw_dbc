@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Work (
     person_id
         INTEGER NOT NULL
         REFERENCES Person (person_id)
-        ON DELETE CASCADE ,
+        ON DELETE CASCADE,
     PRIMARY KEY (project_id, person_id)
 );
 
@@ -76,3 +76,46 @@ INSERT INTO Work (person_id, project_id) VALUES
     (8,4), (8,5),
     (9,4), (9,8), (9,9),
     (10,1), (10,2), (10,3), (10,4), (10,5), (10,6), (10,7), (10,8), (10,9);
+
+/*
+    ---------------------------------------------------------------------------
+        Projekt 2 - Aufgabe 2 (Relationen & Beziehungen)
+    ---------------------------------------------------------------------------
+*/
+
+-- add foreign key to table "Work" / add relationship between Work and Person.
+ALTER TABLE Work
+ADD CONSTRAINT FK_work
+FOREIGN KEY (person_id) REFERENCES Person(person_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+/*
+    Aufgabe 2a)
+    ---------------------------------------------------------------------------
+*/
+-- select all relations for persons in same project. add new row if another project but same persons.
+SELECT p.person_id, w.person_id, w.project_id Work FROM Person AS p
+    JOIN Work AS w ON w.person_id < p.person_id
+    WHERE p.person_id IN (
+        SELECT w_inner.person_id
+        FROM Work as w_inner
+        WHERE w_inner.project_id = w.project_id
+    )
+;
+
+/*
+    Aufgabe 2b)
+    ---------------------------------------------------------------------------
+ */
+
+-- get back number of persons in a relationship with person x
+-- SELECT p.person_id, w.person_id, w.project_id FROM Person AS p
+--    JOIN Work AS w ON w.person_id != p.person_id
+--    WHERE p.person_id IN (
+--        SELECT w_inner.person_id
+--        FROM Work as w_inner
+--        WHERE w_inner.project_id = w.project_id
+--    )
+-- ;
+
