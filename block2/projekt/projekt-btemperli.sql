@@ -116,6 +116,9 @@ WHERE p.person_id IN (
 /*
     Aufgabe 2b)
     ---------------------------------------------------------------------------
+    Gegeben die oben erhaltene Relation, schreiben Sie eine Abfrage, welche für
+    jede Person die Anzahl anderer Personen zurückgibt, mit der sie verbunden
+    ist (Node Centrality, Out Degree).
  */
 
 -- get back number of persons in a relationship with person x
