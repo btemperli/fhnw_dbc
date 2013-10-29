@@ -107,7 +107,9 @@ SELECT
     p.person_id "A id",
     p.name "A name",
     w.person_id "B id",
-    (SELECT pp.name FROM Person as pp WHERE pp.person_id = w.person_id) "B name",
+    (SELECT pp.name
+        FROM Person as pp
+        WHERE pp.person_id = w.person_id) "B name",
     w.project_id "Projekt id"
 
 FROM Person AS p
