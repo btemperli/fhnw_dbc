@@ -103,8 +103,16 @@ FOREIGN KEY (person_id) REFERENCES Person(person_id)
     dann sollen pro Projektzusammenarbeit solch eine Zeile vorhanden sein.
  */
 
-SELECT p.person_id "Person A", w.person_id "Person B", w.project_id "Projekt" FROM Person AS p
+SELECT
+    p.person_id "A id",
+    p.name "A name",
+    w.person_id "B id",
+    (SELECT pp.name FROM Person as pp WHERE pp.person_id = w.person_id) "B name",
+    w.project_id "Projekt id"
+
+FROM Person AS p
     JOIN Work AS w ON w.person_id < p.person_id
+
 WHERE p.person_id IN (
     SELECT w_inner.person_id
     FROM Work as w_inner
