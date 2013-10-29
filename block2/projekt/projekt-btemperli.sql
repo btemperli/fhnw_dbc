@@ -64,11 +64,12 @@ INSERT INTO Project (title, start, stop, proceed) VALUES
     ('Projekt G', '2013-01-01 00:00:00', '2020-10-22 00:00:00', 300000000),
     ('Projekt H', '2013-01-02 00:00:00', '2013-01-03 00:00:00', 250000),
     ('Projekt I', '2013-03-03 00:00:00', '2013-10-22 00:00:00', 333333.33),
-    ('Projekt K', '2013-04-04 00:00:00', '2013-10-22 00:00:00', 200000);
+    ('Projekt K', '2013-04-04 00:00:00', '2013-10-22 00:00:00', 200000),
+    ('Projekt L', '2013-01-01 00:00:00', '2013-12-31 00:00:00', 20000);
 
 INSERT INTO Work (person_id, project_id) VALUES
-    (1,1), (1,3), (1,5), (1,7), (1,9),
-    (2,2), (2,4), (2,6), (2,8),
+    (1,1), (1,3), (1,5), (1,7), (1,9), (1,11),
+    (2,2), (2,4), (2,6), (2,8), (2,11),
     (4,1), (4,2), (4,3),
     (5,1), (5,2), (5,3),
     (6,4), (6,5), (6,6),
@@ -93,16 +94,24 @@ FOREIGN KEY (person_id) REFERENCES Person(person_id)
 /*
     Aufgabe 2a)
     ---------------------------------------------------------------------------
-*/
--- select all relations for persons in same project. add new row if another project but same persons.
-SELECT p.person_id, w.person_id, w.project_id Work FROM Person AS p
+    Schreiben Sie eine Abfrage, welche eine Relation zurückgibt, in der alle
+    Beziehungen zwischen Personen aufgelistet sind. Eine Zeile dieser
+    gewünschten Relation beinhaltet zwei Referenzen (Foreign Keys auf
+    Primary Key der Personenrelation) auf je eine Person, genau dann wenn
+    diese zwei Personen zusammen an einem Projekt arbeiten. Sollte es zwei
+    Personen geben, welche in mehreren Projekten zusammen arbeiten,
+    dann sollen pro Projektzusammenarbeit solch eine Zeile vorhanden sein.
+ */
+
+SELECT p.person_id "Person A", w.person_id "Person B", w.project_id "Projekt" FROM Person AS p
     JOIN Work AS w ON w.person_id < p.person_id
-    WHERE p.person_id IN (
-        SELECT w_inner.person_id
-        FROM Work as w_inner
-        WHERE w_inner.project_id = w.project_id
-    )
+WHERE p.person_id IN (
+    SELECT w_inner.person_id
+    FROM Work as w_inner
+    WHERE w_inner.project_id = w.project_id
+)
 ;
+
 
 /*
     Aufgabe 2b)
