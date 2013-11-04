@@ -131,7 +131,29 @@ WHERE p.person_id IN (
     ist (Node Centrality, Out Degree).
  */
 
--- get back number of persons in a relationship with person x
+SELECT *, COUNT(DISTINCT result.b_id) FROM
+    (
+        SELECT
+          p.person_id "a_id",
+          p.name "a_name",
+          w.person_id "b_id",
+          (SELECT pp.name
+           FROM Person as pp
+           WHERE pp.person_id = w.person_id) "B name",
+          w.project_id "projekt_id"
+
+        FROM Person AS p
+          JOIN Work AS w ON w.person_id != p.person_id
+
+        WHERE p.person_id IN (
+          SELECT w_inner.person_id
+          FROM Work as w_inner
+          WHERE w_inner.project_id = w.project_id
+        )
+    ) AS result
+WHERE result.a_id != result.b_id AND result.a_id = 1
+;
+
 -- SELECT p.person_id, w.person_id, w.project_id FROM Person AS p
 --    JOIN Work AS w ON w.person_id != p.person_id
 --    WHERE p.person_id IN (
