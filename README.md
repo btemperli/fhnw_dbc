@@ -29,5 +29,6 @@ in a browser with **file access**. For example you can open *Google Chrome* with
 #### Setup
 Execute all the MySQL-Query's from the file
 > block2/projekt/projekt-btemperli.sql
+
 in a SQL-Programme.
 The first part creates the tables, the second part fill them with content and the last part does some requests on the database.
