@@ -131,8 +131,8 @@ WHERE p.person_id IN (
     ist (Node Centrality, Out Degree).
  */
 
-SELECT outResult.a_id AS "personId", COUNT(*) AS "relations" FROM (
-    SELECT DISTINCT result.a_id,result.b_id FROM (
+SELECT outerResult.a_id AS "personId", COUNT(*) AS "relations" FROM (
+    SELECT DISTINCT innerResult.a_id,innerResult.b_id FROM (
         SELECT
             p.person_id "a_id",
             p.name "a_name",
@@ -148,10 +148,10 @@ SELECT outResult.a_id AS "personId", COUNT(*) AS "relations" FROM (
         )
         ORDER BY a_id, b_id
     )
-    AS result
+    AS innerResult
 )
-AS outResult
-GROUP BY outResult.a_id
+AS outerResult
+GROUP BY outerResult.a_id
 ;
 
 
