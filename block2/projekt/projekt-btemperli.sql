@@ -131,35 +131,27 @@ WHERE p.person_id IN (
     ist (Node Centrality, Out Degree).
  */
 
-SELECT *, COUNT(DISTINCT result.b_id) FROM
-    (
+SELECT outResult.a_id AS "personId", COUNT(*) AS "relations" FROM (
+    SELECT DISTINCT result.a_id,result.b_id FROM (
         SELECT
-          p.person_id "a_id",
-          p.name "a_name",
-          w.person_id "b_id",
-          (SELECT pp.name
-           FROM Person as pp
-           WHERE pp.person_id = w.person_id) "B name",
-          w.project_id "projekt_id"
+            p.person_id "a_id",
+            p.name "a_name",
+            w.person_id "b_id"
 
         FROM Person AS p
-          JOIN Work AS w ON w.person_id != p.person_id
+            JOIN Work AS w ON w.person_id != p.person_id
 
         WHERE p.person_id IN (
-          SELECT w_inner.person_id
-          FROM Work as w_inner
-          WHERE w_inner.project_id = w.project_id
+            SELECT w_inner.person_id
+            FROM Work as w_inner
+            WHERE w_inner.project_id = w.project_id
         )
-    ) AS result
-WHERE result.a_id != result.b_id AND result.a_id = 1
+        ORDER BY a_id, b_id
+    )
+    AS result
+)
+AS outResult
+GROUP BY outResult.a_id
 ;
 
--- SELECT p.person_id, w.person_id, w.project_id FROM Person AS p
---    JOIN Work AS w ON w.person_id != p.person_id
---    WHERE p.person_id IN (
---        SELECT w_inner.person_id
---        FROM Work as w_inner
---        WHERE w_inner.project_id = w.project_id
---    )
--- ;
 
