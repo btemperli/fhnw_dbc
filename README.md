@@ -27,5 +27,11 @@ in a browser with **file access**. For example you can open *Google Chrome* with
 ## Projekt 2: **MySQL**
 
 #### Setup
-Execute all the MySQL-Query's from the file [projekt_btemperli.sql](https://github.com/btemperli/fhnw-dbc/blob/master/block2/projekt/projekt-btemperli.sql)in a SQL-Programme.
+Execute all the MySQL-Query's from the file [projekt_btemperli.sql](https://github.com/btemperli/fhnw-dbc/blob/master/block2/projekt/projekt-btemperli.sql) in a SQL-Programme.
 The first part creates the tables, the second part fill them with content and the last part does some requests on the database.
+
+## Projekt 3: **Hibernate**
+
+#### Setup
+Try again with [this](http://viralpatel.net/blogs/hibernate-inheritance-table-per-subclass-annotation-xml-mapping/) or [this](http://blog.sencide.com/2011/03/hibernate-tutorial-for-beginners.html) Tutorial.
+All required Files are in the eclipse folder.
