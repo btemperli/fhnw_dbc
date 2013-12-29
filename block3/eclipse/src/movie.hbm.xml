@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="dbc.block3">
+	<class name="Movie" table="movie" >
+		<id name="id" type="int" column="movie_id" >
+			<generator class="native"/>
+		</id>
+ 
+		<property name="title">
+			<column name="title" />
+		</property>
+		
+		<joined-subclass name="RealMovie" extends="Movie" table="real_movie">
+                <key column="movie_id" />
+                <property name="actor" column="actor" />
+        </joined-subclass>
+        
+        <joined-subclass name="AnimationMovie" extends="Movie" table="animation_movie">
+                <key column="movie_id" />
+                <property name="drawer" column="drawer" />
+        </joined-subclass>
+
+ </class>
+</hibernate-mapping>
