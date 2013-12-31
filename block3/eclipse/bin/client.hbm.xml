@@ -1,19 +1,24 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
  
 <hibernate-mapping>
- <class name="dbc.block3.Client" table="client" >
-  <id name="id" type="int" column="id" >
-   <generator class="native"/>
-  </id>
+    <class name="dbc.block3.Client" table="client" >
+        <id name="id" type="Integer" column="client_id">
+            <generator class="native" />
+        </id>
  
-  <property name="firstName">
-   <column name="firstName" />
-  </property>
-  <property name="lastName">
-   <column name="lastName"/>
-  </property>
- </class>
+        <property name="firstName">
+            <column name="firstName" />
+        </property>
+        
+        <property name="lastName">
+            <column name="lastName" />
+        </property>
+  
+        <set name="movies" table="hire" cascade="all">
+            <key column="client_id" />
+            <many-to-many entity-name="dbc.block3.Movie" column="movie_id" />
+        </set>
+        
+    </class>
 </hibernate-mapping>

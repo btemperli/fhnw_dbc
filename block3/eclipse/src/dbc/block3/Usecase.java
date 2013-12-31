@@ -5,8 +5,10 @@
 
 package dbc.block3;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,6 +25,8 @@ public class Usecase {
   
   //  usecase.fillUpDatabase(usecase);
   usecase.usecaseOne(usecase);
+  usecase.usecaseTwo(usecase);
+  usecase.usecaseThree(usecase);
 
  }
  
@@ -57,11 +61,41 @@ public class Usecase {
 	 
 	 Client client = usecase.getClient("Max", "Mueller");
 	 AnimationMovie movie = usecase.getAnimationMovie("Cars");
-	
-	 System.out.println(client.getFirstName() + " " + client.getLastName());
-	 System.out.println(movie.getTitle() + " " + movie.getDrawer());
 	 
-//	 usecase.hireMovie()
+	 usecase.hire(client, movie);
+ }
+ 
+ /**
+  * Usecase 2
+  * ===========================================================================
+  * 2 Real-Filme werden aus der Datenbank gelšscht.
+  * @param usecase
+  */
+ private void usecaseTwo(Usecase usecase) {
+	 /* add new client */
+
+	 Movie movie1 = usecase.getMovie("Die Hard");
+	 Movie movie2 = usecase.getMovie("Transformers");
+	 
+	 usecase.deleteMovie(movie1);
+	 usecase.deleteMovie(movie2);
+ }
+ /**
+  * Usecase 3
+  * ===========================================================================
+  * Ein bestehender Kunde mietet alle Animations-Filme.
+  * @param usecase
+  */
+ private void usecaseThree(Usecase usecase) {
+	 /* add new client */
+	 Client client = usecase.getClient("Max", "Mueller");
+	 
+	 List<AnimationMovie> movies = getAllAnimationMovies();
+	 
+	 for (Iterator<AnimationMovie> iter = movies.iterator(); iter.hasNext();) {
+		 usecase.hire(client, iter.next());;
+	 }
+	 
  }
  
  private void addClient(String firstName, String lastName) {
@@ -139,6 +173,29 @@ public class Usecase {
 	 return client;
  }
  
+ private Movie getMovie(String title) {
+	 Movie movie = null;
+	 
+	 SessionFactory sf = HibernateUtil.getSessionFactory();
+	 Session session = sf.openSession();
+	 session.beginTransaction();
+	    
+	 List<Movie> movies = session.createQuery("from Movie as u where u.title = :title")
+			 .setString( "title", title )
+			 .setMaxResults(1)
+			 .list();
+	 
+	 for (Iterator<Movie> iter = movies.iterator(); iter.hasNext();) {
+		 movie = iter.next();
+	 }
+	 	    
+	 session.getTransaction().commit();
+	 session.flush();
+	 session.close();
+	 
+	 return movie;
+ }
+ 
  private AnimationMovie getAnimationMovie(String title) {
 	 AnimationMovie movie = null;
 	 
@@ -160,6 +217,22 @@ public class Usecase {
 	 session.close();
 	 
 	 return movie;
+ }
+ 
+ private List<AnimationMovie> getAllAnimationMovies() {
+	 
+	 SessionFactory sf = HibernateUtil.getSessionFactory();
+	 Session session = sf.openSession();
+	 session.beginTransaction();
+	    
+	 List<AnimationMovie> movies = session.createQuery("from AnimationMovie")
+			 .list();
+	 	    
+	 session.getTransaction().commit();
+	 session.flush();
+	 session.close();
+	 
+	 return movies;
  }
  
  private void getFullName(String firstName) {
@@ -187,6 +260,36 @@ public class Usecase {
     
 	 session.delete(client);
  
+	 session.getTransaction().commit();
+	 session.flush();
+	 session.close();
+ }
+ 
+ private void deleteMovie(Movie movie) {
+	 SessionFactory sf = HibernateUtil.getSessionFactory();
+	 Session session = sf.openSession();
+	 session.beginTransaction();
+    
+	 session.delete(movie);
+ 
+	 session.getTransaction().commit();
+	 session.flush();
+	 session.close();
+ }
+ 
+ private void hire(Client client, Movie movie) {
+	 
+	 SessionFactory sf = HibernateUtil.getSessionFactory();
+	 Session session = sf.openSession();
+	 session.beginTransaction();
+	 
+     Set<Client> clients = new HashSet<Client>();
+     clients.add(client);
+
+     movie.setClients(clients);
+     
+     session.update(movie);
+     
 	 session.getTransaction().commit();
 	 session.flush();
 	 session.close();

@@ -5,6 +5,9 @@
 
 package dbc.block3;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "movie")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Movie {
+public class Movie implements java.io.Serializable {
 	
 	@Id
     @GeneratedValue
@@ -24,7 +27,10 @@ public class Movie {
 	private Integer id;
 	
 	@Column(name = "title")
-	private String title;	
+	private String title;
+	
+	private Set<Client> clients = new HashSet<Client>(0);
+
 
 	public Integer getId() {
 		return id;
@@ -40,6 +46,14 @@ public class Movie {
 	
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public Set<Client> getClients() {
+		return this.clients;
+	}
+
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
 	}
 	
 }

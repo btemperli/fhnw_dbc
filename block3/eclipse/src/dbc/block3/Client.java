@@ -5,10 +5,14 @@
 
 package dbc.block3;
 
-public class Client {
+import java.util.HashSet;
+import java.util.Set;
+
+public class Client implements java.io.Serializable {
 	private Integer id;
 	private String firstName;
 	private String lastName;
+	private Set<Movie> movies = new HashSet<Movie>(0);
 	
 	public Integer getId() {
 		return id;
@@ -32,5 +36,13 @@ public class Client {
 	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public Set<Movie> setMovies() {
+		return this.movies;
+	}
+
+	public void setCategories(Set<Movie> movies) {
+		this.movies = movies;
 	}
 }
