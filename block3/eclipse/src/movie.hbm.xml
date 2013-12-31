@@ -3,15 +3,20 @@
  
 <hibernate-mapping package="dbc.block3">
 	<class name="Movie" table="movie" >
-		<id name="id" type="Integer" column="movie_id" >
+		<id name="id" type="int" column="movie_id" >
 			<generator class="native" />
 		</id>
  
 		<property name="title">
 			<column name="title" />
 		</property>
-		
-		<joined-subclass name="RealMovie" table="real_movie">
+        
+        <set name="clients" table="hire" cascade="all">
+            <key column="movie_id" />
+            <many-to-many entity-name="dbc.block3.Client" column="client_id" />
+        </set>
+        
+        <joined-subclass name="RealMovie" table="real_movie">
             <key column="movie_id" />
             <property name="actor">
                 <column name="actor" />
@@ -24,11 +29,6 @@
                 <column name="drawer" />
             </property>
         </joined-subclass>
-        
-        <set name="clients" table="hire" cascade="all">
-            <key column="movie_id" />
-            <many-to-many entity-name="dbc.block3.Client" column="client_id" />
-        </set>
 
     </class>
 </hibernate-mapping>

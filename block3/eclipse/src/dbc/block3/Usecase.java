@@ -23,7 +23,7 @@ public class Usecase {
    
   Usecase usecase = new Usecase();
   
-  //  usecase.fillUpDatabase(usecase);
+//    usecase.fillUpDatabase(usecase);
   usecase.usecaseOne(usecase);
   usecase.usecaseTwo(usecase);
   usecase.usecaseThree(usecase);

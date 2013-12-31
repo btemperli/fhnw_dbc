@@ -38,11 +38,11 @@ public class Client implements java.io.Serializable {
 		this.lastName = lastName;
 	}
 	
-	public Set<Movie> setMovies() {
+	public Set<Movie> getMovies() {
 		return this.movies;
 	}
 
-	public void setCategories(Set<Movie> movies) {
+	public void setMovies(Set<Movie> movies) {
 		this.movies = movies;
 	}
 }

@@ -3,7 +3,7 @@
  
 <hibernate-mapping>
     <class name="dbc.block3.Client" table="client" >
-        <id name="id" type="Integer" column="client_id">
+        <id name="id" type="int" column="client_id">
             <generator class="native" />
         </id>
  
