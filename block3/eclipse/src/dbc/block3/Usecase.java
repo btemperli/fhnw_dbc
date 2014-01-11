@@ -23,7 +23,7 @@ public class Usecase {
    
   Usecase usecase = new Usecase();
   
-//    usecase.fillUpDatabase(usecase);
+  usecase.fillUpDatabase(usecase);
   usecase.usecaseOne(usecase);
   usecase.usecaseTwo(usecase);
   usecase.usecaseThree(usecase);
@@ -56,13 +56,25 @@ public class Usecase {
   * @param usecase
   */
  private void usecaseOne(Usecase usecase) {
+	 
+	 String firstName = "Max";
+	 String filmTitle = "Cars";
 	 /* add new client */
-	 usecase.addClient("Max", "Mueller");
+	 usecase.addClient(firstName, "Mueller");
 	 
 	 Client client = usecase.getClient("Max", "Mueller");
-	 AnimationMovie movie = usecase.getAnimationMovie("Cars");
+	 AnimationMovie movie = usecase.getAnimationMovie(filmTitle);
 	 
 	 usecase.hire(client, movie);
+	 
+	 // some tests.
+	 if (!firstName.equals(client.getFirstName())) {
+		 showMessage("Error during add Person to db");
+	 } else if (!filmTitle.equals(movie.getTitle())) {
+		 showMessage("Error during receive Movie.");
+	 } else {
+		 showMessage("usecase One: okay!");
+	 }
  }
  
  /**
@@ -72,6 +84,7 @@ public class Usecase {
   * @param usecase
   */
  private void usecaseTwo(Usecase usecase) {
+	 Boolean test = true;
 	 /* add new client */
 
 	 Movie movie1 = usecase.getMovie("Die Hard");
@@ -79,6 +92,19 @@ public class Usecase {
 	 
 	 usecase.deleteMovie(movie1);
 	 usecase.deleteMovie(movie2);
+	 
+	 // some tests.
+	 try {
+		movie1.getTitle();
+		movie2.getTitle();
+	 } catch(Exception e) {
+		 test = false;
+	 }
+	 if (!test) {
+		 showMessage("Error during deleting movies.");
+	 } else {
+		 showMessage("usecase Two okay!");
+	 }
  }
  /**
   * Usecase 3
@@ -94,6 +120,12 @@ public class Usecase {
 	 
 	 for (Iterator<AnimationMovie> iter = movies.iterator(); iter.hasNext();) {
 		 usecase.hire(client, iter.next());;
+	 }
+	 
+	 if (movies.isEmpty()) {
+		 showMessage("No Movies to hire.");
+	 } else {
+		 showMessage("Usecase Three okay!");
 	 }
 	 
  }
@@ -293,5 +325,9 @@ public class Usecase {
 	 session.getTransaction().commit();
 	 session.flush();
 	 session.close();
+ }
+ 
+ private void showMessage(String message) {
+	 System.out.println(message);
  }
 }

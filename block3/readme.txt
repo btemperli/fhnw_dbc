@@ -3,6 +3,15 @@
  (c) 2013, beat@temper.li
 ===============================================================================
 
+ANMERKUNGEN:
+
+Aus Gründen der Einfachheit und mit dem Wissen, dass das Projekt nur ein Schul-
+Projekt ist, wird im Java-Teil auf
+ - "Try"
+ - "Catch"
+ - "Exception" / "Throw Exception"
+verzichtet.
+
 USE-CASES
 
 1.
