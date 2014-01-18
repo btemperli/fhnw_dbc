@@ -310,6 +310,14 @@ class Main {
 	private void useCase3 () {
 		
 		boolean check = true;
+		AnimationMovie searchMovie = new AnimationMovie();
+		searchMovie.setId(null);
+		searchMovie.setTitle(null);
+		searchMovie.setYear(null);
+		searchMovie.setDrawer("Dreamworks");
+		
+		
+				
 		
 		System.out.println("usecase 3");
 		System.out.println("************************************************");
@@ -318,9 +326,46 @@ class Main {
 		tryLoop: {
 			try {
 				
+				List<Movie> movies = findMovies(container, searchMovie);
+				List<Client> clients = findAllClients(container);
+				
+				if (movies == null) {
+					System.out.println("Found no movies.");
+					check = false;
+					break tryLoop;
+				}
+				
+				if (clients.isEmpty()) {
+					System.out.println("Found no clients.");
+					check = false;
+					break tryLoop;
+				}
+				
+				for (Movie m : movies) {
+					System.out.println("Found movie " + m.getTitle());
+					for (Client c : clients) {
+						List<Movie> itsMovies = c.getHiredMovies();
+						if (itsMovies.contains(m)) {
+							System.out.println("Remove movie from Client " + c.getName());
+							itsMovies.remove(m);
+							c.setHiredMovies(itsMovies);
+							container.store(c);
+						}
+					}
+					container.delete(m);
+				}
+				
 				// tests
 				System.out.println();
 				System.out.println("--- TEST ---");
+				movies = findMovies(container, searchMovie);
+				
+				if (movies != null) {
+					check = false;
+				}
+			
+				System.out.println("testEmptyList: " + check);
+
 			} finally {
 				container.close();
 			}
@@ -404,6 +449,27 @@ class Main {
 
 	}
 	
+	public List<Client> findClients(ObjectContainer cont, Client findClient) {
+		final ObjectSet<Client> c = cont.queryByExample(findClient);
+		
+		if (c.isEmpty()) {
+			return null;
+		}
+		
+		return c;
+	}
+	
+	public List<Client> findAllClients(ObjectContainer cont) {
+		ObjectSet<Client> result = cont.query(new Predicate<Client>() {
+		    @Override
+		    public boolean match(Client c) {
+		        return c.getId() > 0;
+		    }
+		});
+		
+		return result;
+	}
+	
 	public Movie findMovie(ObjectContainer cont, Movie findMovie) {
 		final ObjectSet<Movie> m = cont.queryByExample(findMovie);
 		
@@ -412,5 +478,15 @@ class Main {
 		}
 		
 		return m.get(0);
+	}
+	
+	public List<Movie> findMovies(ObjectContainer cont, Movie findMovie) {
+		final ObjectSet<Movie> m = cont.queryByExample(findMovie);
+		
+		if (m.isEmpty()) {
+			return null;
+		}
+		
+		return m;
 	}
 }
