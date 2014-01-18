@@ -1,5 +1,6 @@
 package dbc.block4;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.db4o.Db4oEmbedded;
@@ -35,7 +36,30 @@ class Main {
 		 * Client (id:2) hires a movie (id:1)
 		 */
 		main.useCase1();
+		
+		/*
+		 * usecase 2:
+		 * Client (id:3) didn't pay his bills, so we have to remove all his hiredMovies.
+		 */
+		main.useCase2();
+		
+		/*
+		 * usecase 3:
+		 * The company has a problem with "DreamWorks", we have to remove all the movies from Dreamworks.
+		 */
+		main.useCase3();
+		
+		/*
+		 * usecase 4:
+		 * The company adds a new Film and gives it to all Users.
+		 */
+		main.useCase4();
 
+		/*
+		 * usecase 5:
+		 * Client (id:2) hires all AnimationMovies.
+		 */
+		main.useCase5();
 	 }
 	
 	private void setContent () {
@@ -168,13 +192,6 @@ class Main {
 		
 		System.out.println("usecase 1");
 		System.out.println("************************************************");
-		
-//		EmbeddedConfiguration configuration = Db4oEmbedded.newConfiguration();
-//		configuration.common().objectClass(AnimationMovie.class).updateDepth(2);
-//		configuration.common().objectClass(Client.class).updateDepth(2);
-//		configuration.common().objectClass(Movie.class).updateDepth(2);
-//		configuration.common().objectClass(RealMovie.class).updateDepth(2);
-
 
 		container = Db4oEmbedded.openFile(DATABASE);
 		tryLoop: {
@@ -231,6 +248,140 @@ class Main {
 		
 		
 		System.out.println("Result: " + check);
+		System.out.println();
+	}
+	
+	
+	/**
+	 * usecase 2:
+	 * Client (id:3) didn't pay his bills, so we have to remove all his hiredMovies.
+	 */
+	private void useCase2 () {
+		
+		boolean check = true;
+		final Integer clientId = 3;
+		
+		Client searchClient = new Client(clientId);
+		Client client;
+		
+		System.out.println("usecase 2");
+		System.out.println("************************************************");
+		
+		container = Db4oEmbedded.openFile(DATABASE);
+		tryLoop: {
+			try {
+				
+				// get Client
+				client = findClient(container, searchClient);
+				if (client == null) {
+					System.out.println("No client found with id: " + clientId);
+					break tryLoop;
+				}
+				System.out.println("Found Client: " + client.getName());
+				
+				// create empty List
+				List<Movie> emptyMovieList = new ArrayList<Movie>();
+				client.setHiredMovies(emptyMovieList);
+				container.store(client);
+				
+				// tests
+				System.out.println();
+				System.out.println("--- TEST ---");
+				
+				Client testClient = findClient(container, searchClient);
+				if (testClient.getHiredMovies().size() != 0) {
+					check = false;
+				}
+				System.out.println("testEmptyList: " + check);
+				
+			} finally {
+				container.close();
+			}
+		}
+		
+		System.out.println("Result: " + check);
+		System.out.println();
+	}
+	
+	/**
+	 * usecase 3:
+	 * The company has a problem with "DreamWorks", we have to remove all the movies from Dreamworks.
+	 */
+	private void useCase3 () {
+		
+		boolean check = true;
+		
+		System.out.println("usecase 3");
+		System.out.println("************************************************");
+		
+		container = Db4oEmbedded.openFile(DATABASE);
+		tryLoop: {
+			try {
+				
+				// tests
+				System.out.println();
+				System.out.println("--- TEST ---");
+			} finally {
+				container.close();
+			}
+		}
+		
+		System.out.println("Result: " + check);
+		System.out.println();
+	}
+	
+	/**
+	 * usecase 4:
+	 * The company adds a new Film and gives it to all Users.
+	 */
+	private void useCase4 () {
+		
+		boolean check = true;
+		
+		System.out.println("usecase 4");
+		System.out.println("************************************************");
+		
+		container = Db4oEmbedded.openFile(DATABASE);
+		tryLoop: {
+			try {
+				
+				// tests
+				System.out.println();
+				System.out.println("--- TEST ---");
+			} finally {
+				container.close();
+			}
+		}
+		
+		System.out.println("Result: " + check);
+		System.out.println();
+	}
+
+	/**
+	 * usecase 5:
+	 * Client (id:2) hires all AnimationMovies.
+	 */
+	private void useCase5 () {
+		
+		boolean check = true;
+		
+		System.out.println("usecase 5");
+		System.out.println("************************************************");
+		
+		container = Db4oEmbedded.openFile(DATABASE);
+		tryLoop: {
+			try {
+				
+				// tests
+				System.out.println();
+				System.out.println("--- TEST ---");
+			} finally {
+				container.close();
+			}
+		}
+		
+		System.out.println("Result: " + check);
+		System.out.println();
 	}
 	
 	public void store(Object object) {
