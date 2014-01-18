@@ -2,3 +2,5 @@ atlassian-ide-plugin.xml
 .idea
 *.pdf
 hibernate.cfg.xml
+
+block4/db4o-8.0
