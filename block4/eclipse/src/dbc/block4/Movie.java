@@ -5,17 +5,16 @@
 
 package dbc.block4;
 
+import java.util.List;
+
 public class Movie {
 	
 	private Integer id;
 	private String title;
 	private Integer year;
-	
-//	private Set<Client> clients = new HashSet<Client>(0);
-
+	private List<Client> clients;
 
 	// Constructor
-	
 	Movie() {
 		this(0, "", 0);
 	}
@@ -51,12 +50,12 @@ public class Movie {
 		this.year = year;
 	}
 	
-//	public Set<Client> getClients() {
-//		return this.clients;
-//	}
-//
-//	public void setClients(Set<Client> clients) {
-//		this.clients = clients;
-//	}
+	public List<Client> getClients() {
+		return this.clients;
+	}
+	
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
 	
 }
