@@ -5,17 +5,15 @@
 
 package dbc.block4;
 
+import java.util.ArrayList;
 import java.util.List;
-
-//import java.util.HashSet;
-//import java.util.Set;
 
 public class Client {
 	
 	private Integer id;
 	private String firstName;
 	private String lastName;
-	private List<Movie> hiredMovies;
+	private List<Movie> hiredMovies = new ArrayList<Movie>();
 	
 	// methods
 	public void print() {
@@ -37,6 +35,7 @@ public class Client {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.hiredMovies = new ArrayList<Movie>();
 	}
 	
 	// getter and setter
@@ -58,6 +57,9 @@ public class Client {
 	
 	public String getLastName() {
 		return lastName;
+	}
+	public String getName() {
+		return firstName + " " + lastName;
 	}
 	
 	public void setLastName(String lastName) {

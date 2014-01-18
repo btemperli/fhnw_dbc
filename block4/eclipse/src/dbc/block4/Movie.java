@@ -5,6 +5,7 @@
 
 package dbc.block4;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
@@ -12,17 +13,22 @@ public class Movie {
 	private Integer id;
 	private String title;
 	private Integer year;
-	private List<Client> clients;
+	private List<Client> clients = new ArrayList<Client>();
 
 	// Constructor
 	Movie() {
 		this(0, "", 0);
 	}
 	
+	Movie(Integer id) {
+		this.id = id;
+	}
+	
 	Movie(Integer id, String title, Integer year) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
+		this.clients = new ArrayList<Client>();
 	}
 	
 	// Setter and Getter

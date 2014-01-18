@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
 
 /**
@@ -16,10 +18,9 @@ import com.db4o.query.Predicate;
  */
 class Main {
 	
-	private String database = "databaseProject4.db4o";
+	final String DATABASE = "databaseProject4.db4o";
 	private boolean hasDatabaseContent = false;
-
-	
+	private ObjectContainer container;
 	
 	public static void main(String[] args) {
 		System.out.println("start dbc4 - a db4o example-project");
@@ -27,16 +28,20 @@ class Main {
 
 	    Main main = new Main();
 		
+	    // set a minimal test-content in the database.
 		main.setContent();
+		
+		/* usecase 1:
+		 * Client (id:2) hires a movie (id:1)
+		 */
+		main.useCase1();
 
 	 }
 	
 	private void setContent () {
-		
-		ObjectContainer container;
-		
+				
 		// make testRequest to check if we have to fill database.
-		container = Db4oEmbedded.openFile(database);
+		container = Db4oEmbedded.openFile(DATABASE);
 		try {
 			List<RealMovie> checkMovies = container.query(new Predicate<RealMovie>() {
 				public boolean match(RealMovie r) {
@@ -93,34 +98,27 @@ class Main {
 			System.out.println("************************************************");
 			System.out.println("");
 			
-			container = Db4oEmbedded.openFile(database);
-			
-			try {
-				
-				container.store(realMovie1);
-				container.store(realMovie2);
-				container.store(realMovie3);
-				container.store(animationMovie1);
-				container.store(animationMovie2);
-				container.store(animationMovie3);
-				container.store(client1);
-				container.store(client2);
-				container.store(client3);
-				container.store(client4);
-				container.store(client5);
-				container.store(client6);
-				
-			} finally {
-				
-				container.close();
-			}
+		    Main main = new Main();
+
+			main.store(realMovie1);
+			main.store(realMovie2);
+			main.store(realMovie3);
+			main.store(animationMovie1);
+			main.store(animationMovie2);
+			main.store(animationMovie3);
+			main.store(client1);
+			main.store(client2);
+			main.store(client3);
+			main.store(client4);
+			main.store(client5);
+			main.store(client6);
 
 		}
 		
 		// read objects
 		System.out.println("read data");
 		System.out.println("************************************************");
-		container = Db4oEmbedded.openFile(database);
+		container = Db4oEmbedded.openFile(DATABASE);
 		try {
 			List<RealMovie> realMovies = container.query(new Predicate<RealMovie>() {
 				public boolean match(RealMovie r) {
@@ -151,5 +149,117 @@ class Main {
 		}
 		
 		System.out.println();
+	}
+	
+	/**
+	 * useCase 1:
+	 * Client (id:2) hires a movie (id:1)
+	 */
+	private void useCase1 () {
+		
+		boolean check = true;
+		final Integer clientId = 2;
+		final Integer movieId = 1;
+		
+		Client searchClient = new Client(clientId);
+		Movie searchMovie = new Movie(movieId);
+		Client client;
+		Movie movie;
+		
+		System.out.println("usecase 1");
+		System.out.println("************************************************");
+		
+//		EmbeddedConfiguration configuration = Db4oEmbedded.newConfiguration();
+//		configuration.common().objectClass(AnimationMovie.class).updateDepth(2);
+//		configuration.common().objectClass(Client.class).updateDepth(2);
+//		configuration.common().objectClass(Movie.class).updateDepth(2);
+//		configuration.common().objectClass(RealMovie.class).updateDepth(2);
+
+
+		container = Db4oEmbedded.openFile(DATABASE);
+		tryLoop: {
+			try {
+		
+				// get Movie with id
+				movie = findMovie(container, searchMovie);
+
+				if (movie == null) {
+					System.out.println("No movie found with id: " + movieId);
+					break tryLoop;
+				}
+				
+				System.out.println("Found Movie: " + movie.getTitle());
+			
+				// get Client with id
+				client = findClient(container, searchClient);
+				
+				if (client == null) {
+					System.out.println("No client found with id: " + clientId);
+					break tryLoop;
+				}
+				
+				System.out.println("Found Client: " + client.getName());
+
+				// update client
+				List<Movie> hiredMovies = client.getHiredMovies();
+				hiredMovies.add(movie);
+				client.setHiredMovies(hiredMovies);
+				container.store(client);
+				
+				// update movie
+				List<Client> clients = movie.getClients();
+				clients.add(client);
+				movie.setClients(clients);
+				container.store(movie);
+				
+				// tests
+				System.out.println();
+				System.out.println("--- TEST ---");
+				
+				Client testClient = findClient(container, searchClient);
+				check = testClient.getHiredMovies().get(testClient.getHiredMovies().size() - 1).equals(movie);
+				System.out.println("hiredMovies: " + check);
+
+				Movie testMovie = findMovie(container, searchMovie);
+				check = testMovie.getClients().get(testMovie.getClients().size() - 1).equals(client);
+				System.out.println("useCase1: " + check);
+				
+			} finally {
+				container.close();
+			}
+		}
+		
+		
+		System.out.println("Result: " + check);
+	}
+	
+	public void store(Object object) {
+		container = Db4oEmbedded.openFile(DATABASE);
+		try {
+			container.store(object);
+		} finally {
+			container.close();
+		}
+	}
+	
+	public Client findClient(ObjectContainer cont, Client findClient) {
+		final ObjectSet<Client> c = cont.queryByExample(findClient);
+		
+		if (c.isEmpty()) {
+			return null;
+		}
+		
+		return c.get(0);
+
+	}
+	
+	public Movie findMovie(ObjectContainer cont, Movie findMovie) {
+		final ObjectSet<Movie> m = cont.queryByExample(findMovie);
+		
+		if (m.isEmpty()) {
+			return null;
+		}
+		
+		return m.get(0);
 	}
 }
