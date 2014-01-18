@@ -12,7 +12,7 @@ public class RealMovie extends Movie {
 	
 	// methods
 	public void print() {
-		System.out.println("ID: " + this.getId()
+		System.out.println("ID " + this.getId()
 				+ "   RealMovie, " + this.getTitle()
 				+ ". Year: " + this.getYear()
 				+ ". Actor: " + actor );

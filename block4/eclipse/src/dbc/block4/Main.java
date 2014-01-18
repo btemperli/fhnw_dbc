@@ -1,5 +1,11 @@
 package dbc.block4;
 
+import java.util.List;
+
+import com.db4o.Db4oEmbedded;
+import com.db4o.ObjectContainer;
+import com.db4o.query.Predicate;
+
 /**
  * Main class of object as controller of this project.
  * @author btemperli
@@ -21,6 +27,9 @@ class Main {
 	 }
 	
 	private void setContent () {
+		
+		ObjectContainer container;
+		
 		System.out.println("start construct data");
 		System.out.println("************************************************");
 		
@@ -40,8 +49,47 @@ class Main {
 		animationMovie2.print();
 		animationMovie3.print();
 		
+		System.out.println(" ");
+		
+		
+		System.out.println("save and read data");
 		System.out.println("************************************************");
-		System.out.println("end construct data");
+		// save objects.
+		container = Db4oEmbedded.openFile("databaseProject4.db4o");
+		try {
+			container.store(realMovie1);
+			container.store(realMovie2);
+			container.store(realMovie3);
+			container.store(animationMovie1);
+			container.store(animationMovie2);
+			container.store(animationMovie3);
 
+		} finally {
+			container.close();
+		}
+
+		
+		// read objects
+		container = Db4oEmbedded.openFile("databaseProject4.db4o");
+		try {
+			List<RealMovie> realMovies = container.query(new Predicate<RealMovie>() {
+				public boolean match(RealMovie r) {
+					return r.getYear() > 0;
+				}
+			});
+			for (RealMovie realMovie : realMovies) {
+				realMovie.print();
+			}
+			List<AnimationMovie> animationMovies = container.query(new Predicate<AnimationMovie>() {
+				public boolean match(AnimationMovie a) {
+					return a.getYear() > 0;
+				}
+			});
+			for (AnimationMovie animationMovie : animationMovies) {
+				animationMovie.print();
+			}
+		} finally {
+			container.close();
+		}
 	}
 }
