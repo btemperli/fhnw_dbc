@@ -404,6 +404,12 @@ class Main {
 				
 				List<Client> allClients = findAllClients(container);
 				
+				if (allClients.isEmpty()) {
+					System.out.println("Found no clients.");
+					check = false;
+					break tryLoop;
+				}
+				
 				for (Client c : allClients) {
 					List<Movie> hiredMovies = c.getHiredMovies();
 					hiredMovies.add(findMovieResult);
@@ -438,6 +444,9 @@ class Main {
 	private void useCase5 () {
 		
 		boolean check = true;
+		Client searchClient = new Client(1);
+		AnimationMovie lastMovie = new AnimationMovie();
+
 		
 		System.out.println("usecase 5");
 		System.out.println("************************************************");
@@ -446,9 +455,38 @@ class Main {
 		tryLoop: {
 			try {
 				
+				Client c = findClient(container, searchClient);
+				List<AnimationMovie> allAnimationMovies = findAllAnimationMovies(container);
+				
+				List<Movie> hiredMovies = c.getHiredMovies();
+				
+				if (allAnimationMovies.isEmpty()) {
+					System.out.println("Found no animation Movies.");
+					check = false;
+					break tryLoop;
+				}
+				
+				for (AnimationMovie a: allAnimationMovies) {
+					hiredMovies.add(a);
+					lastMovie = a;
+					System.out.println("Added to Client " + c.getName() + " the movie " + a.getTitle());
+				}
+				
+				c.setHiredMovies(hiredMovies);
+				
 				// tests
 				System.out.println();
 				System.out.println("--- TEST ---");
+				c = findClient(container, searchClient);
+			    List<Movie> checkHiredMovies = c.getHiredMovies();
+			    
+			    check = checkHiredMovies.size() == hiredMovies.size();
+			    System.out.println("test size of hiredMovies: " + check);
+			    
+			    check = checkHiredMovies.contains(lastMovie);
+			    System.out.println("test checkMovieIsHired: " + check);
+			    
+				
 			} finally {
 				container.close();
 			}
@@ -456,8 +494,20 @@ class Main {
 		
 		System.out.println("Result: " + check);
 		System.out.println();
+		
+		finished();
+
 	}
 	
+	public void finished() {
+		System.out.println("************************************************");
+		System.out.println("finished.");
+
+	}
+	
+	
+	// some standard methods
+	// -------------------------------------------------------------------------------- //
 	public void store(Object object) {
 		container = Db4oEmbedded.openFile(DATABASE);
 		try {
@@ -517,5 +567,16 @@ class Main {
 		}
 		
 		return m;
+	}
+	
+	public List<AnimationMovie> findAllAnimationMovies(ObjectContainer cont) {
+		final ObjectSet<AnimationMovie> result = cont.query(new Predicate<AnimationMovie>() {
+			@Override
+			public boolean match(AnimationMovie a) {
+				return a.getId() > 0;
+			}
+		});
+		
+		return result;
 	}
 }
