@@ -372,6 +372,7 @@ class Main {
 		}
 		
 		System.out.println("Result: " + check);
+		System.out.println("(Hint: Usecase 3 works only once. When the movies are deleted already, it returns false.)");
 		System.out.println();
 	}
 	
@@ -382,6 +383,9 @@ class Main {
 	private void useCase4 () {
 		
 		boolean check = true;
+		RealMovie movie = new RealMovie(7, "The Hunger Games", 2012, "Jennifer Lawrence");
+		Movie searchMovie = new Movie(7);
+		Client searchClient = new Client(1);
 		
 		System.out.println("usecase 4");
 		System.out.println("************************************************");
@@ -389,10 +393,35 @@ class Main {
 		container = Db4oEmbedded.openFile(DATABASE);
 		tryLoop: {
 			try {
+			    Movie findMovieResult = findMovie(container, searchMovie);
+				if (findMovieResult == null) {
+					System.out.println("add Movie to List.");
+					container.store(movie);
+				    findMovieResult = findMovie(container, searchMovie);
+				}
+				
+				System.out.println("Movie to add: " + findMovieResult.getTitle());
+				
+				List<Client> allClients = findAllClients(container);
+				
+				for (Client c : allClients) {
+					List<Movie> hiredMovies = c.getHiredMovies();
+					hiredMovies.add(findMovieResult);
+					c.setHiredMovies(hiredMovies);
+					container.store(c);
+					System.out.println("add Movie to hiredMovies of " + c.getName());
+				}
 				
 				// tests
 				System.out.println();
 				System.out.println("--- TEST ---");
+				Client testClient = findClient(container, searchClient);
+				List<Movie> checkHiredMovies = testClient.getHiredMovies();
+				
+				check = checkHiredMovies.contains(findMovieResult);
+				System.out.println("test to find the hired movie: " + check);
+				
+				
 			} finally {
 				container.close();
 			}
